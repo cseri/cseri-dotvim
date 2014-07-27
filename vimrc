@@ -130,4 +130,7 @@ behave mswin
 
 " config options that seem to be useful right now
 set expandtab
-set spell
+if has("gui_running")
+  " spell check under console makes the whole file red
+  set spell
+endif
