@@ -25,6 +25,23 @@ git submodule init
 git submodule update
 ```
 
+Commands to do the above on Windows:
+```bat
+C:
+cd $USERPROFILE
+git clone https://github.com/cseri/cseri-dotvim.git vimfiles
+cd vimfiles
+git submodule init
+git submodule update
+```
+
+and create the link as administrator
+```bat
+C:
+cd $USERPROFILE
+mklink .vimrc vimfiles\vimrc
+```
+
 ###Updating
 
 Just pull and update the submodules.
