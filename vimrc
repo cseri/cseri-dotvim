@@ -128,6 +128,10 @@ endif
 
 behave mswin
 
+"Go-specific
+autocmd FileType go setlocal noexpandtab         "Go uses tabs
+autocmd FileType go setlocal listchars+=tab:\ \  "there's no need to highlight them
+
 " config options that seem to be useful right now
 set expandtab
 if has("gui_running")
