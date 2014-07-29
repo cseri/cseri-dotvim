@@ -35,7 +35,15 @@ set ttymouse=xterm2
 
 """"word wrapping""""
 set nowrap
-"TODO implement a Notepad-like behaviour with toggle key
+"TODO implement word wrapping toggle key
+"  - should toggle list and word wrap at once
+"  - should be default when editing LaTeX files
+
+"a Notepad-like navigation for long lines if using arrows
+"(navigation along screen lines)
+noremap <Down> gj
+noremap <Up> gk
+
 
 """"search settings""""
 if &t_Co > 2 || has("gui_running")
