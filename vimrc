@@ -34,15 +34,56 @@ set ttymouse=xterm2
 
 
 """"word wrapping""""
-set nowrap
-"TODO implement word wrapping toggle key
-"  - should toggle list and word wrap at once
-"  - should be default when editing LaTeX files
 
 "a Notepad-like navigation for long lines if using arrows
 "(navigation along screen lines)
-noremap <Down> gj
-noremap <Up> gk
+noremap  <silent> <F3> :call ToggleWrap()<CR>
+inoremap <silent> <F3> <C-o>:call ToggleWrap()<CR>
+"ToggleWrap from here:
+"http://vim.wikia.com/wiki/Move_cursor_by_display_lines_when_wrapping
+"changes:
+" - Wrap OFF enables list
+" - removed virtualedit
+" - fixed map-unmap pairs
+function ToggleWrap()
+  if &wrap
+    echo "Wrap OFF"
+    setlocal nowrap list
+    silent! unmap  <buffer> <Up>
+    silent! unmap  <buffer> <Down>
+    silent! unmap  <buffer> <Home>
+    silent! unmap  <buffer> <End>
+    silent! iunmap <buffer> <Up>
+    silent! iunmap <buffer> <Down>
+    silent! iunmap <buffer> <Home>
+    silent! iunmap <buffer> <End>
+  else
+    echo "Wrap ON"
+    setlocal wrap linebreak nolist
+    setlocal display+=lastline
+    noremap  <buffer> <silent> <Up>   gk
+    noremap  <buffer> <silent> <Down> gj
+    noremap  <buffer> <silent> <Home> g<Home>
+    noremap  <buffer> <silent> <End>  g<End>
+    inoremap <buffer> <silent> <Up>   <C-o>gk
+    inoremap <buffer> <silent> <Down> <C-o>gj
+    inoremap <buffer> <silent> <Home> <C-o>g<Home>
+    inoremap <buffer> <silent> <End>  <C-o>g<End>
+  endif
+endfunction
+
+"to be used in autocmd FileType
+function TurnOnWrap()
+  if &wrap
+  else
+    call ToggleWrap()
+  endif
+endfunction
+
+set nowrap
+" LaTeX files should wrap by default
+autocmd FileType tex call TurnOnWrap()
+autocmd FileType plaintex call TurnOnWrap()
 
 
 """"search settings""""
