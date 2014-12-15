@@ -92,6 +92,7 @@ if &t_Co > 2 || has("gui_running")
   set hlsearch
   set incsearch              "For fast terminals can highlight search string as you type
 endif
+set ignorecase               "needed for smartcase
 set smartcase                "ignore case if the pattern contains only lowercase letters
 
 "if &diff                    "Currently I see no reason why this is good
