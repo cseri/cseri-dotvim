@@ -23,7 +23,7 @@ set history=1000             "increase history from 20
 set ruler                    "show line/column info in status bar
 set number                   "show line numbers
 if version >= 703
-  set colorcolumn=120        " margin at 120
+  set colorcolumn=80,120     " margin at 80 and 120
 endif
  
 set pastetoggle=<F2>         "F2 toggles paste mode globally
