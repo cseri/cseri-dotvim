@@ -176,8 +176,6 @@ endif
 " }
 
 
-behave mswin
-
 "Go-specific
 autocmd FileType go setlocal noexpandtab         "Go uses tabs
 autocmd FileType go setlocal listchars+=tab:\ \  "there's no need to highlight them
@@ -194,4 +192,6 @@ if has("gui_running")
   set spell
 
   set guifont=Lucida_Console:h14
+
+  behave mswin
 endif
