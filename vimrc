@@ -182,6 +182,11 @@ behave mswin
 autocmd FileType go setlocal noexpandtab         "Go uses tabs
 autocmd FileType go setlocal listchars+=tab:\ \  "there's no need to highlight them
 
+" Temporary for TopCoder
+"set noexpandtab         "Go uses tabs
+"set listchars+=tab:\ \  "there's no need to highlight them
+"set noet ci pi sts=0 sw=2 ts=2
+
 " config options that seem to be useful right now
 set expandtab
 if has("gui_running")
