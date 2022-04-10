@@ -191,7 +191,9 @@ if has("gui_running")
   " spell check under console makes the whole file red
   set spell
 
-  set guifont=Lucida_Console:h14
+  if has("win32")
+    set guifont=Lucida_Console:h14
+  endif
 
   behave mswin
 endif
