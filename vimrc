@@ -197,3 +197,8 @@ if has("gui_running")
 
   behave mswin
 endif
+
+" Prefer unix line ending on Windows (and use it for new files by default).
+if has("win32")
+  set fileformats=unix,dos
+endif
